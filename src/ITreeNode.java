@@ -13,4 +13,5 @@ public interface ITreeNode {
      * @return the decision tree's decision
      */
     public String getDecision(Row forDatum);
+
 }

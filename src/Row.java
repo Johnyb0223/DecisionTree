@@ -145,4 +145,5 @@ public class Row {
                     this.displayName.equals(row.displayName);
         }
     }
+
 }

@@ -31,8 +31,8 @@ public class BasicDatasetTest {
         Dataset training = new Dataset(attributeList, dataObjects, AttributeSelection.ASCENDING_ALPHABETICAL);
         // builds a TreeGenerator object and generates a tree for "foodType"
         this.testGenerator = new TreeGenerator();
-//        TODO: Uncomment this once you've implemented generateTree
-//        this.testGenerator.generateTree(training, this.targetAttribute);
+        //TODO: Uncomment this once you've implemented generateTree
+        this.testGenerator.generateTree(training, this.targetAttribute);
     }
 
     /**
@@ -48,7 +48,7 @@ public class BasicDatasetTest {
         tangerine.setAttributeValue("calories", "high");
         // TODO: make your own assertions based on the expected classifications
         // TODO: Uncomment this once you've implemented getDecision
-//        Assert.assertEquals("fruit", this.testGenerator.getDecision(tangerine));
+        Assert.assertEquals("fruit", this.testGenerator.getDecision(tangerine));
 
     }
 }
