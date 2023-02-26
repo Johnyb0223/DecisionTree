@@ -62,7 +62,7 @@ public class Dataset implements IDataset  {
         }
         //If no rows satisfied the relation throw a RuntimeException
         if(newDataObjectsList.isEmpty()){
-            throw new RuntimeException("No row mathced the given attribute value relation");
+            throw new RuntimeException("No row matched the given attribute value relation");
         }
         //Return our subset
         return new Dataset(newAttributeList, newDataObjectsList, this.selectionType);
@@ -216,6 +216,13 @@ public class Dataset implements IDataset  {
     @Override
     public int size(){
         return this.dataObjects.size();
+    }
+
+    /***/
+    public Dataset newDataset(){
+        Dataset copy = new Dataset(this.attributeList, this.dataObjects, this.selectionType);
+        return copy;
+
     }
 
 }

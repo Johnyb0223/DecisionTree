@@ -28,15 +28,16 @@ public class TreeGenerator implements ITreeGenerator<Dataset> {
      * @param trainingData - a Dataset
      * @param  targetAttribute - the attribute we are looking to make decisions on
      * */
+    @Override
     public void generateTree(Dataset trainingData, String targetAttribute){
         //Copy of our dataSet
-        Dataset copyDataset = trainingData;
-        //current depth in the tree
+        Dataset copyDataset = trainingData.newDataset();
         //If it's a new tree, remove targetAttribute from our attributeList
         copyDataset.getAttributeList().remove(targetAttribute);
         //Base case when it's time to make a decision
         if(copyDataset.isHomogeneous(targetAttribute, null, 0) || copyDataset.getAttributeList().isEmpty()){
             this.root = new DecisionLeaf(copyDataset.maxValue(targetAttribute));
+
         } else {
             //Attribute selected to split on
             String splitAttribute = copyDataset.getAttributeToSplitOn();
@@ -53,6 +54,7 @@ public class TreeGenerator implements ITreeGenerator<Dataset> {
                 generator.generateTree(copyDataset.generateSubset(splitAttribute, rowValue), targetAttribute);
                 ValueEdge newEdge = new ValueEdge(rowValue, generator.getRoot());
                 valueEdges.add(newEdge);
+                seenValues.add(rowValue);
             }
 
             this.root = new AttributeNode(splitAttribute, trainingData.maxValue(targetAttribute), valueEdges);

@@ -194,14 +194,14 @@ public class DecisionTreeTester<G extends ITreeGenerator<D>, D extends IDataset>
         DecisionTreeTester<TreeGenerator, Dataset> tester;
         try {
             tester = new DecisionTreeTester<>(TreeGenerator.class, Dataset.class);
-            Dataset trainingData = makeDataset(MUSHROOMS_TRAINING, Dataset.class);
+            Dataset trainingData = makeDataset(VILLAINS_TRAINING, Dataset.class);
             double accuracy =
-                    tester.getDecisionTreeAccuracy(trainingData, trainingData, IS_POISONOUS);
+                    tester.getDecisionTreeAccuracy(trainingData, trainingData, IS_VILLAIN);
             System.out.println("Accuracy on training data: " + accuracy);
 
             int numIters = 100;
-            Dataset testingData = makeDataset(MUSHROOMS_TESTING, Dataset.class);
-            accuracy = tester.getAverageDecisionTreeAccuracy(trainingData, testingData, IS_POISONOUS, numIters);
+            Dataset testingData = makeDataset(VILLAINS_TESTING, Dataset.class);
+            accuracy = tester.getAverageDecisionTreeAccuracy(trainingData, testingData, IS_VILLAIN, numIters);
             System.out.println("Accuracy on testing data: " + accuracy);
 
         } catch (InstantiationException | InvocationTargetException

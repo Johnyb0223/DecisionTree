@@ -33,16 +33,13 @@ public class AttributeNode implements ITreeNode  {
     @Override
     public String getDecision(Row row){
         String rowValue = row.getAttributeValue(this.value);
-        String decision = null;
         for (ValueEdge valueEdge : this.outgoingEdges){
-            if(rowValue.equals(valueEdge.getValue())){
-                decision = valueEdge.getChild().getDecision(row);
-                break;
+            if(valueEdge.getValue().equals(rowValue)){
+                return valueEdge.getChild().getDecision(row);
+
             }
         }
-        if(decision == null){
-            decision = this.defaultValue;
+        return this.defaultValue;
         }
-        return decision;
     }
 }
