@@ -41,5 +41,5 @@ public class AttributeNode implements ITreeNode  {
         }
         return this.defaultValue;
         }
-    }
 }
+

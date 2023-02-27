@@ -26,8 +26,8 @@ public class Dataset implements IDataset  {
      * @param attributeSelection - an enum for which way to select attributes
      */
     public Dataset(List<String> attributeList, List<Row> dataObjects, AttributeSelection attributeSelection) {
-        this.attributeList = attributeList;
-        this.dataObjects = dataObjects;
+        this.attributeList = new ArrayList<String>(attributeList);
+        this.dataObjects = new ArrayList<Row>(dataObjects);
         this.selectionType = attributeSelection;
     }
 
@@ -83,20 +83,22 @@ public class Dataset implements IDataset  {
      * */
     public boolean isHomogeneous(String attribute, String value, int index){
         //If there are no rows in our set throw an exception.
+        //System.out.println("debug line 86 value param" + value);
         if(this.dataObjects.isEmpty()){
             throw  new RuntimeException("Cant determine if an empty set is homogeneous");
         }
         //If we have reached the end of the list then we know all of the values have matched up.
+
         if(index == this.dataObjects.size()){
             return true;
         }
         //If this is the first recursive call check get the first value and recur.
         if(value == null){
-            String foundValue = this.dataObjects.get(index).getAttributeValue(attribute);
+           String foundValue = this.dataObjects.get(0).getAttributeValue(attribute);
             return this.isHomogeneous(attribute, foundValue, ++index);
         }
         //If the value of the current row matches our value then recur, else return false.
-        if(this.dataObjects.get(index).getAttributeValue(attribute).equals( value)){
+        if(this.dataObjects.get(index).getAttributeValue(attribute).equals(value)){
             return this.isHomogeneous(attribute, value, ++index);
         }else {
             return false;

@@ -39,7 +39,7 @@ public class ValueEdge {
      * @return the child node
      * */
     public ITreeNode getChild(){
-        return  this.child;
+        return this.child;
     }
 
 

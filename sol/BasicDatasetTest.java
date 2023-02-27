@@ -44,11 +44,11 @@ public class BasicDatasetTest {
         // TODO: make your own rows based on your dataset
         Row tangerine = new Row("test row (tangerine)");
         tangerine.setAttributeValue("color", "orange");
-        tangerine.setAttributeValue("highProtein", "false");
+        tangerine.setAttributeValue("highProtein", "sdfs");
         tangerine.setAttributeValue("calories", "high");
         // TODO: make your own assertions based on the expected classifications
         // TODO: Uncomment this once you've implemented getDecision
-        Assert.assertEquals("fruit", this.testGenerator.getDecision(tangerine));
+        Assert.assertEquals("vegetable", this.testGenerator.getDecision(tangerine));
 
     }
 }

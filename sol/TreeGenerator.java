@@ -43,7 +43,6 @@ public class TreeGenerator implements ITreeGenerator<Dataset> {
         } else {
             //Attribute selected to split on
             String splitAttribute = copyDataset.getAttributeToSplitOn();
-
             //Now lets make generate a list of value edges
             ArrayList<String> seenValues = new ArrayList<>();
             ArrayList<ValueEdge> valueEdges = new ArrayList<>();
@@ -58,7 +57,6 @@ public class TreeGenerator implements ITreeGenerator<Dataset> {
                 valueEdges.add(newEdge);
                 seenValues.add(rowValue);
             }
-
             this.root = new AttributeNode(splitAttribute, trainingData.maxValue(targetAttribute), valueEdges);
         }
     }
